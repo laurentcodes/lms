@@ -205,7 +205,8 @@ export default function CreateBill() {
 									/>
 								</FormControl>
 								<FormDescription>
-									Provide a summary of the bill's purpose and main provisions
+									Provide a summary of the bill&apos;s purpose and main
+									provisions
 								</FormDescription>
 								<FormMessage />
 							</FormItem>

@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import { toast } from 'sonner';
-import { useRouter } from 'next/navigation';
 
 // utils
 import { setCookie, clearCookie } from '@/utils/cookies';
