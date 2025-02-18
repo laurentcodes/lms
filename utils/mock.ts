@@ -1,0 +1,38 @@
+export const bills = [
+	{
+		id: 1,
+		title: 'Education Reform Act 2024',
+		billNumber: 'HB-2024-001',
+		category: 'Education',
+		status: 'Under Review',
+		progress: 40,
+		sponsor: {
+			name: 'Jane Smith',
+			image: null,
+			initials: 'JS',
+		},
+		submissionDate: '2024-03-15',
+		lastUpdate: '2024-03-20',
+		committee: 'Education and Workforce',
+		steps: ['Draft', 'Review', 'Committee', 'Voting', 'Enacted/Rejected'],
+		currentStep: 1,
+	},
+	{
+		id: 2,
+		title: 'Healthcare Access Improvement Bill',
+		billNumber: 'HB-2024-002',
+		category: 'Health',
+		status: 'Draft',
+		progress: 20,
+		sponsor: {
+			name: 'John Doe',
+			image: null,
+			initials: 'JD',
+		},
+		submissionDate: '2024-03-18',
+		lastUpdate: '2024-03-18',
+		committee: 'Health and Human Services',
+		steps: ['Draft', 'Review', 'Committee', 'Voting', 'Enacted/Rejected'],
+		currentStep: 0,
+	},
+];
