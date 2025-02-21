@@ -59,30 +59,23 @@ export default function BillPage() {
 	// Find the bill in our mock data
 	const bill = bills.find((b) => b.id === Number(id));
 
-	if (!bill) {
-		return (
-			<div className='container mx-auto p-4 max-w-3xl'>
-				<h1 className='text-2xl font-bold'>Bill not found</h1>
-			</div>
-		);
-	}
-
 	// Combine primary sponsor and co-sponsors into a comma-separated string
 	const allSponsors = [
-		bill.sponsor.name,
-		...(bill.coSponsors?.map((cs) => cs.name) || []),
+		bill?.sponsor?.name,
+		...(bill?.coSponsors?.map((cs) => cs.name) || []),
 	].join(', ');
 
+	// Move the useForm hook here to ensure it's called unconditionally
 	const form = useForm<z.infer<typeof billSchema>>({
 		resolver: zodResolver(billSchema),
 		defaultValues: {
-			title: bill.title,
-			category: bill.category,
-			committee: bill.committee,
-			description: bill.description || '',
-			fullText: bill.fullText || '',
-			status: bill.status,
-			progress: bill.progress,
+			title: bill?.title || '',
+			category: bill?.category || '',
+			committee: bill?.committee || '',
+			description: bill?.description || '',
+			fullText: bill?.fullText || '',
+			status: bill?.status || '',
+			progress: bill?.progress || 0,
 			sponsors: allSponsors,
 		},
 	});
@@ -108,6 +101,14 @@ export default function BillPage() {
 		setIsEditing(false);
 	}
 
+	if (!bill) {
+		return (
+			<div className='container mx-auto p-4 max-w-3xl'>
+				<h1 className='text-2xl font-bold'>Bill not found</h1>
+			</div>
+		);
+	}
+
 	return (
 		<main className='container mx-auto p-4 max-w-3xl'>
 			<div className='flex justify-between items-center mb-6'>
@@ -120,7 +121,7 @@ export default function BillPage() {
 					</Button>
 				</div>
 
-				{bill.status !== 'Rejected' && (
+				{bill?.status !== 'Rejected' && (
 					<div className='flex items-center space-x-2'>
 						<Button onClick={() => setIsEditing(!isEditing)}>
 							{isEditing ? (

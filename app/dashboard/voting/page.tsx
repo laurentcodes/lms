@@ -22,15 +22,10 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-// store
-import { authStore } from '@/app/store';
-
 // mock
 import { votes } from '@/utils/mock';
 
 export default function VotingDashboard() {
-	const { logout } = authStore();
-
 	const [showCreateDialog, setShowCreateDialog] = useState<boolean>(false);
 	const [newVoteTitle, setNewVoteTitle] = useState<string>('');
 	const [showVoters, setShowVoters] = useState<boolean>(true);
