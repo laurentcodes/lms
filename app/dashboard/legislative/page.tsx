@@ -29,7 +29,7 @@ export default function LegislativeDashboard() {
 				<h1 className='text-3xl font-bold'>Legislative Dashboard</h1>
 
 				<Button asChild>
-					<Link href='/bills/create'>
+					<Link href='/dashboard/legislative/bills/create'>
 						<Plus className='w-4 h-4 mr-2' />
 						Create Bill
 					</Link>
