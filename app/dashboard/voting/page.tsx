@@ -3,24 +3,13 @@
 import { useState } from 'react';
 
 // icons
-import {
-	EyeOff,
-	LogOut,
-	Plus,
-	ThumbsDown,
-	ThumbsUp,
-	Users,
-} from 'lucide-react';
+import { Plus } from 'lucide-react';
 
 // components
-import { VoteCard } from '@/components/voting/voters';
 import VotingAnalytics from '@/components/voting/analytics';
+import { VoteCard } from '@/components/voting/voters';
 
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
 	Dialog,
 	DialogContent,
@@ -28,6 +17,10 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 // store
 import { authStore } from '@/app/store';

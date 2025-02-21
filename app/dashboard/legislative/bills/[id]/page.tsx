@@ -54,7 +54,7 @@ export default function BillPage() {
 	const { id } = useParams();
 	const [isEditing, setIsEditing] = useState(false);
 	const { billCategories } = billStore();
-	const [fullText, setFullText] = useState('');
+	// const [fullText, setFullText] = useState('');
 
 	// Find the bill in our mock data
 	const bill = bills.find((b) => b.id === Number(id));
@@ -319,7 +319,7 @@ export default function BillPage() {
 										<RichTextEditor
 											content={field.value}
 											onChange={(content) => {
-												setFullText(content);
+												// setFullText(content);
 												field.onChange(content);
 											}}
 											placeholder='Enter the complete text of the bill'

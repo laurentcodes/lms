@@ -39,7 +39,7 @@ export const VoteCard = ({ vote }: { vote: any }) => {
 
 							<DialogContent>
 								<DialogHeader>
-									<DialogTitle>Voters for "{vote.title}"</DialogTitle>
+									<DialogTitle>Voters for &quot;{vote.title}&quot;</DialogTitle>
 								</DialogHeader>
 
 								<div className='space-y-4'>
