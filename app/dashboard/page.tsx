@@ -2,61 +2,43 @@
 
 import Link from 'next/link';
 
-// icons
-import { Plus, LogOut } from 'lucide-react';
-
-// components
-import Bill from '@/components/bills/bill';
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-
-// utils
-import { bills } from '@/utils/mock';
-
-// store
-import { authStore } from '@/app/store';
-
 export default function Dashboard() {
-	const { logout } = authStore();
-
 	return (
-		<main className='container mx-auto p-4 max-w-7xl'>
-			<div className='flex justify-between items-center mb-6'>
-				<h1 className='text-3xl font-bold'>Legislative Dashboard</h1>
-
-				<div className='flex gap-4'>
-					<Button asChild>
-						<Link href='/bills/create'>
-							<Plus className='w-4 h-4 mr-2' />
-							Create Bill
-						</Link>
-					</Button>
-
-					<Button variant='outline' onClick={logout}>
-						<LogOut className='w-4 h-4 mr-2' />
-						Sign Out
-					</Button>
-				</div>
+		<div className='container mx-auto p-4 max-w-7xl'>
+			<div className='mb-6'>
+				<h1 className='text-2xl font-bold'>
+					Hi Admin, Welcome to Legislative Management System
+				</h1>
 			</div>
 
-			<Tabs defaultValue='my-bills' className='space-y-4'>
-				<TabsList>
-					<TabsTrigger value='my-bills'>My Bills</TabsTrigger>
-					<TabsTrigger value='all-bills'>All Bills</TabsTrigger>
-				</TabsList>
+			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+				{/* Legislative Dashboard Card */}
+				<Link href='/dashboard/legislative' className='group'>
+					<div className='border rounded-lg p-6 hover:border-primary transition-colors'>
+						<h2 className='text-2xl font-semibold mb-2 group-hover:text-primary'>
+							Legislative Dashboard
+						</h2>
 
-				<TabsContent value='my-bills' className='space-y-4'>
-					{bills.slice(0, 1).map((bill) => (
-						<Bill key={bill.id} bill={bill} />
-					))}
-				</TabsContent>
+						<p className='text-muted-foreground'>
+							Manage and track legislative bills, their status, and related
+							activities.
+						</p>
+					</div>
+				</Link>
 
-				<TabsContent value='all-bills'>
-					{bills.map((bill) => (
-						<Bill key={bill.id} bill={bill} />
-					))}
-				</TabsContent>
-			</Tabs>
-		</main>
+				{/* Voting Dashboard Card */}
+				<Link href='/dashboard/voting' className='group'>
+					<div className='border rounded-lg p-6 hover:border-primary transition-colors'>
+						<h2 className='text-2xl font-semibold mb-2 group-hover:text-primary'>
+							Voting Dashboard
+						</h2>
+
+						<p className='text-muted-foreground'>
+							Create and manage votes, view results, and analyze voting trends.
+						</p>
+					</div>
+				</Link>
+			</div>
+		</div>
 	);
 }

@@ -4,7 +4,16 @@ import { toast } from 'sonner';
 // utils
 import { setCookie, clearCookie } from '@/utils/cookies';
 
+interface User {
+	id: number;
+	name: string;
+	email: string;
+	role: string;
+}
+
 interface AuthStore {
+	user: User | null;
+	setUser: (user: User | null) => void;
 	isAuthenticated: boolean;
 	setIsAuthenticated: (isAuthenticated: boolean) => void;
 	login: (email: string, password: string) => void;
@@ -12,12 +21,28 @@ interface AuthStore {
 }
 
 const authStore = create<AuthStore>((set) => ({
+	user: {
+		id: 1,
+		name: 'Jane Smith',
+		email: 'admin@lms.com',
+		role: 'admin',
+	},
+	setUser: (user) => set({ user }),
 	isAuthenticated: false,
 	setIsAuthenticated: (isAuthenticated) => set({ isAuthenticated }),
 	login: (email: string, password: string) => {
 		if (email === 'admin@lms.com' && password === 'admin1234') {
 			setCookie('isAuthenticated', 'true', 4 * 3600);
+
 			set({ isAuthenticated: true });
+			set({
+				user: {
+					id: 1,
+					name: 'Jane Smith',
+					email: 'admin@lms.com',
+					role: 'admin',
+				},
+			});
 
 			toast.success('Logged in successfully.');
 

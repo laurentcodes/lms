@@ -10,7 +10,6 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Badge } from '../ui/badge';
 import { Progress } from '../ui/progress';
-// import { Separator } from '../ui/separator';
 
 const getStatusColor = (status: string) => {
 	switch (status.toLowerCase()) {

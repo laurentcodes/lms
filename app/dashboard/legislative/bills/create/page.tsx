@@ -129,12 +129,15 @@ export default function CreateBill() {
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel>Bill Title</FormLabel>
+
 								<FormControl>
 									<Input placeholder='Enter bill title' {...field} />
 								</FormControl>
+
 								<FormDescription>
 									Provide a clear and concise title for the bill
 								</FormDescription>
+
 								<FormMessage />
 							</FormItem>
 						)}
@@ -146,6 +149,7 @@ export default function CreateBill() {
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel>Category</FormLabel>
+
 								<Select
 									onValueChange={field.onChange}
 									defaultValue={field.value}
@@ -155,6 +159,7 @@ export default function CreateBill() {
 											<SelectValue placeholder='Select a category' />
 										</SelectTrigger>
 									</FormControl>
+
 									<SelectContent>
 										{billCategories.map((category) => (
 											<SelectItem key={category} value={category}>
@@ -163,9 +168,11 @@ export default function CreateBill() {
 										))}
 									</SelectContent>
 								</Select>
+
 								<FormDescription>
 									Choose the most relevant category for your bill
 								</FormDescription>
+
 								<FormMessage />
 							</FormItem>
 						)}
@@ -177,15 +184,18 @@ export default function CreateBill() {
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel>Sponsor(s)</FormLabel>
+
 								<FormControl>
 									<Input
 										placeholder='Enter sponsor names (comma-separated)'
 										{...field}
 									/>
 								</FormControl>
+
 								<FormDescription>
 									List the primary sponsor and any co-sponsors
 								</FormDescription>
+
 								<FormMessage />
 							</FormItem>
 						)}
@@ -197,6 +207,7 @@ export default function CreateBill() {
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel>Description</FormLabel>
+
 								<FormControl>
 									<Textarea
 										placeholder='Enter a brief description of the bill'
@@ -204,10 +215,12 @@ export default function CreateBill() {
 										{...field}
 									/>
 								</FormControl>
+
 								<FormDescription>
 									Provide a summary of the bill&apos;s purpose and main
 									provisions
 								</FormDescription>
+
 								<FormMessage />
 							</FormItem>
 						)}
@@ -219,6 +232,7 @@ export default function CreateBill() {
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel>Bill Content</FormLabel>
+
 								<FormControl>
 									<RichTextEditor
 										content={fullText}
@@ -229,9 +243,11 @@ export default function CreateBill() {
 										placeholder='Enter the complete text of the bill'
 									/>
 								</FormControl>
+
 								<FormDescription>
 									Enter the complete legislative text of the bill
 								</FormDescription>
+
 								<FormMessage />
 							</FormItem>
 						)}
@@ -247,6 +263,7 @@ export default function CreateBill() {
 									onFilesChange={handleFileChange}
 								/>
 							</FormControl>
+
 							<FormDescription>
 								Upload supporting documents (PDF, Word, or text files, max 10MB
 								each)
@@ -291,6 +308,7 @@ export default function CreateBill() {
 								<Send className='w-4 h-4 mr-2' />
 								Submit
 							</Button>
+
 							<Button type='submit' variant='outline'>
 								<Save className='w-4 h-4 mr-2' />
 								Save Draft
