@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 // form
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -39,7 +41,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
 // store
-import { billStore } from '@/app/store';
+import { billStore, authStore } from '@/app/store';
 
 // utils
 import { getFileTypeLabel } from '@/utils/functions';
@@ -54,12 +56,13 @@ const ACCEPTED_FILE_TYPES = [
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 
 export default function CreateBill() {
-	const [attachments, setAttachments] = useState<File[]>([]);
-	const [fullText, setFullText] = useState('');
-
+	const router = useRouter();
+	
+	const { user } = authStore();
 	const { billCategories } = billStore();
 
-	console.log(billCategories);
+	const [attachments, setAttachments] = useState<File[]>([]);
+	const [fullText, setFullText] = useState('');
 
 	const createBillSchema = z.object({
 		title: z.string().min(1, 'Title is required'),
@@ -74,7 +77,7 @@ export default function CreateBill() {
 	const defaultValues = {
 		title: '',
 		description: '',
-		sponsors: '',
+		sponsors: user?.name || '',
 		fullText: '',
 	};
 
@@ -107,6 +110,12 @@ export default function CreateBill() {
 	function onSubmit(values: z.infer<typeof createBillSchema>) {
 		// TODO: Implement form submission with attachments
 		console.log({ ...values, attachments });
+
+		toast.success('Bill created successfully');
+
+		setTimeout(() => {
+			router.push('/dashboard/legislative');
+		}, 3000);
 	}
 
 	return (

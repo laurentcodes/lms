@@ -18,6 +18,7 @@ interface AuthStore {
 	setIsAuthenticated: (isAuthenticated: boolean) => void;
 	login: (email: string, password: string) => void;
 	logout: () => void;
+	register: (user: User) => void;
 }
 
 const authStore = create<AuthStore>((set) => ({
@@ -61,6 +62,18 @@ const authStore = create<AuthStore>((set) => ({
 
 		setTimeout(() => {
 			window.location.href = '/';
+		}, 2000);
+	},
+	register: (user: User) => {
+		// Simulate a registration process
+		set({ user });
+		set({ isAuthenticated: true });
+		setCookie('isAuthenticated', 'true', 4 * 3600);
+
+		toast.success('Registered successfully.');
+
+		setTimeout(() => {
+			window.location.href = '/dashboard';
 		}, 2000);
 	},
 }));

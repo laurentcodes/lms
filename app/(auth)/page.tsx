@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 // form
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -27,7 +29,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 // store
-import { authStore } from './store';
+import { authStore } from '../store';
 
 const signInSchema = z.object({
 	email: z
@@ -57,12 +59,13 @@ export default function SignIn() {
 	};
 
 	return (
-		<main className='container max-w-lg mx-auto min-h-screen flex items-center justify-center p-4'>
+		<main className='container max-w-lg mx-auto min-h-screen flex flex-col items-center justify-center p-4 space-y-6'>
 			<Card className='w-full'>
 				<CardHeader className='space-y-1'>
 					<CardTitle className='text-2xl text-center'>
 						Legislative Management System
 					</CardTitle>
+
 					<CardDescription className='text-center'>
 						Sign in to access the dashboard
 					</CardDescription>
@@ -114,6 +117,16 @@ export default function SignIn() {
 					</Form>
 				</CardContent>
 			</Card>
+
+			<div className='text-center text-sm text-muted-foreground'>
+				Don't have an account?{' '}
+				<Link
+					href='/sign-up'
+					className='text-primary font-medium hover:underline'
+				>
+					Create an account
+				</Link>
+			</div>
 		</main>
 	);
 }
