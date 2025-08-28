@@ -101,7 +101,7 @@ export default function SignIn() {
 										<FormControl>
 											<Input
 												type='password'
-												placeholder='Enter your password'
+												placeholder='admin1234'
 												{...field}
 											/>
 										</FormControl>
@@ -109,6 +109,12 @@ export default function SignIn() {
 									</FormItem>
 								)}
 							/>
+
+							<div className='text-center text-sm text-muted-foreground bg-muted/30 p-3 rounded-md'>
+								<strong>Demo Credentials</strong>
+								<br />
+								Email: admin@lms.com | Password: admin1234
+							</div>
 
 							<Button type='submit' className='w-full'>
 								Sign In
