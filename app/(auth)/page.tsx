@@ -27,6 +27,8 @@ import {
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
 
 // store
 import { authStore } from '../store';
@@ -101,7 +103,7 @@ export default function SignIn() {
 										<FormControl>
 											<Input
 												type='password'
-												placeholder='Enter your password'
+												placeholder='admin1234'
 												{...field}
 											/>
 										</FormControl>
@@ -109,6 +111,32 @@ export default function SignIn() {
 									</FormItem>
 								)}
 							/>
+
+							<div className='bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 space-y-3'>
+								<div className='flex items-center justify-center gap-2'>
+									<Badge variant="secondary" className='bg-blue-100 text-blue-800 font-semibold'>
+										Demo Credentials
+									</Badge>
+								</div>
+								<Separator className='bg-blue-200' />
+								<div className='space-y-2 text-sm'>
+									<div className='flex items-center justify-between p-2 bg-white/60 rounded-md border border-blue-100'>
+										<span className='font-medium text-gray-700'>Email:</span>
+										<code className='bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-mono'>
+											admin@lms.com
+										</code>
+									</div>
+									<div className='flex items-center justify-between p-2 bg-white/60 rounded-md border border-blue-100'>
+										<span className='font-medium text-gray-700'>Password:</span>
+										<code className='bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-mono'>
+											admin1234
+										</code>
+									</div>
+								</div>
+								<p className='text-xs text-center text-blue-600/80 italic'>
+									Use these credentials to explore the system
+								</p>
+							</div>
 
 							<Button type='submit' className='w-full'>
 								Sign In
